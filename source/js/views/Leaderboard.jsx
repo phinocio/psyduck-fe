@@ -34,7 +34,7 @@ export default class Leaderboard extends Component {
       users,
     } = this.props;
 
-    var sortedUsers = users.results.sort((u1, u2) =>  parseInt(u2.Posts.find(p => p.CountType === "4").Count) - parseInt(u1.Posts.find(p => p.CountType === "4").Count));
+    var sortedUsers = users.results.sort((u1, u2) => parseInt(u2.Posts.find(p => p.CountType === "4").Count) - parseInt(u1.Posts.find(p => p.CountType === "4").Count));
 
     return sortedUsers.map((user, index) => {
       return (
@@ -53,10 +53,10 @@ export default class Leaderboard extends Component {
     return (
       <div className='users'>
         <h1>Ranking</h1>
-        { loading && <div>Loading users...</div> }
-        { error && error.toString() }
+        {loading && <div>Loading users...</div>}
+        {error && error.toString()}
         <div className='user-list'>
-          { users && this.renderUsers() }
+          {users && this.renderUsers()}
         </div>
       </div>
     );

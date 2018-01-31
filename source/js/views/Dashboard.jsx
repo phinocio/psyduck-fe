@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 @connect(state => ({
-    counter: state.users.get('counter'),
+  counter: state.users.get('counter'),
 }))
 export default class Dashboard extends Component {
   static propTypes = {
@@ -14,7 +14,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard'>
-      I am Groot
+        I am Groot
       </div>
     );
   }

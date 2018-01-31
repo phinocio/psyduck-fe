@@ -3,3 +3,4 @@
 @import "base/app";
 @import "navigation/menu";
 @import "leaderboard/userlist";
+@import "userdetails";

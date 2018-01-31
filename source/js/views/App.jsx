@@ -17,10 +17,10 @@ class App extends Component {
 
         <div className='page'>
           <Switch>
-            <Route exact path={ routeCodes.DASHBOARD } component={ Dashboard } />
-            <Route path={ routeCodes.USER_PROFILE } component={ UserProfile } />
-            <Route path={ routeCodes.LEADERBOARD } component={ Leaderboard } />
-            <Route path='*' component={ NotFound } />
+            <Route exact path={routeCodes.DASHBOARD} component={Dashboard} />
+            <Route path={routeCodes.USER_PROFILE} component={UserProfile} />
+            <Route path={routeCodes.LEADERBOARD} component={Leaderboard} />
+            <Route path='*' component={NotFound} />
           </Switch>
         </div>
       </div>
