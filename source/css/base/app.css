@@ -1,0 +1,87 @@
+html {
+    font-size: 10px;
+  
+    @media (--lg) {
+      font-size: 12px;
+    }
+  
+    @media (--xl) {
+      font-size: 14px;
+    }
+  }
+  
+  body {
+    color: var(--black);
+    font-family: var(--font-family-sans-serif);
+  }
+
+  .app {
+    font-size: 1.5rem;
+    padding: 2rem;
+  
+    @media (--md) {
+      padding: 3rem;
+    }
+  
+    @media (--lg) {
+      padding: 4rem;
+    }
+  }
+
+  a {
+    color: var(--grey-text);
+  }
+  
+  a:hover {
+    color: var(--black);
+  }
+  
+  h1,
+  h2,
+  h3 {
+    margin: 2rem 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.7rem;
+  }
+  
+  hr {
+    border: 0;
+    border-top: 1px solid var(--grey-border);
+    margin: 2rem 0;
+  }
+  
+  button {
+    background: transparent;
+    border-radius: 1.6rem;
+    border: 0.1rem solid var(--black);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.7rem 2rem;
+  }
+  
+  button:disabled {
+    opacity: 0.3;
+  }
+  
+  button:hover {
+    background: var(--white);
+  }
+
+  .page {
+    max-width: 60rem;
+    margin: 0 auto;
+  
+    @media (--lg) {
+      margin: 0 0 0 20rem;
+    }
+  }
