@@ -36,9 +36,9 @@ export default class Leaderboard extends Component {
 
     var sortedUsers = users.results.sort((u1, u2) =>  parseInt(u2.Posts.find(p => p.CountType === "4").Count) - parseInt(u1.Posts.find(p => p.CountType === "4").Count));
 
-    return sortedUsers.map(person => {
+    return sortedUsers.map((user, index) => {
       return (
-        <UserCard key={person.UserId} user={person} />
+        <UserCard key={user.UserId} rank={index + 1} user={user} />
       );
     });
   }
@@ -51,11 +51,11 @@ export default class Leaderboard extends Component {
     } = this.props;
 
     return (
-      <div className='People'>
+      <div className='users'>
         <h1>Ranking</h1>
         { loading && <div>Loading users...</div> }
         { error && error.toString() }
-        <div className='People-list'>
+        <div className='user-list'>
           { users && this.renderUsers() }
         </div>
       </div>

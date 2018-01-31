@@ -2,11 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'dev/logger';
 
-import Immutable from 'immutable'; // Remove if you are not using server rendering
-
 import rootSaga from 'sagas';
 import rootReducer from 'reducers';
-import { debug } from 'util';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 

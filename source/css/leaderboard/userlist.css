@@ -1,0 +1,146 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(http://weloveiconfonts.com/api/?family=fontelico);
+
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  padding-right: 0.3em;
+}
+
+/* fontelico */
+[class*="fontelico-"]:before {
+  font-family: 'fontelico', sans-serif;
+  padding-right: 0.3em;
+}
+
+.title-pen {
+  color: #333;
+  text-align: center;
+}
+.title-pen span {
+  color: #55acee;
+}
+
+.flex-container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+
+.flex-item {
+	-webkit-flex: 1 auto;
+}
+
+.user-plate {
+    display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.user-details {
+    -webkit-flex: 1 auto;
+    margin: 1.5em;
+
+}
+.user-rank {
+    margin: 1em 0em 1em 0.2em;
+    color: #658585;
+    font-size: 3em;
+    font-weight: bold;
+}
+.user-card {
+    -webkit-flex: 1 auto;
+  margin: auto;
+  height: 11em;
+  background:rgba(0, 0, 0, 0.096);
+  border-radius: .3em;
+margin-bottom: 2.5em;
+margin-right: 1em;
+@media (--md) {
+    flex-basis: 50%;
+    flex-shrink: 0;
+  }
+  
+  @media (--lg) {
+    width: 35em; 
+}
+}
+
+.user-card  .username {
+    position: absolute;
+  margin: auto;
+  margin-top: 1.6em;
+  color: #658585;
+  font-size: 1.53em;
+  font-weight: bold;
+}
+.user-card  .bio {
+  margin: auto;
+  display: inline-block;
+  margin-left: 10.43em;
+  color: #e76043; 
+  font-size: .87em;
+}
+.user-card > .description {
+  margin: auto;
+  margin-top: 1.35em;
+  margin-right: 4.43em;
+  width: 14em;
+  color: #c0c5c5; 
+  font-size: .87em;
+}
+.user-details > img.avatar {
+	padding: .7em;
+  margin-left: .3em;
+  margin-top: .3em;
+  height: 6.23em;
+  width: 6.23em;
+  border-radius: 18em;
+}
+
+.user-card > .post-data {
+    display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    
+	margin: -1em auto;
+	height: 3.70em;
+  background: #4eb6b6;
+  border-radius: 0 0 .3em .3em;
+}
+.post-data > .post-count {
+	margin: 0 auto;
+  padding: 0.3em; 
+  -webkit-flex: 1 auto;
+
+}
+
+.user-card span {
+	color: #e3eeee;
+  white-space: nowrap;
+  font-weight: bold;
+}
+.user-card span:hover {
+  color: #daebea;
+}
+
+footer > h1 {
+  display: block;
+  text-align: center;
+  clear: both;
+  color: #343f3d;
+  line-height: 6;
+  font-size: 1.6em;
+}
+footer > h1 a {
+  text-decoration: none;
+  color: #ea4c89;
+}
+
+.user-list {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+  }

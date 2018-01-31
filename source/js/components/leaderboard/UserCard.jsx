@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default class UserCard extends Component {
   static propTypes = {
     user: PropTypes.object,
+    rank: PropTypes.number,
   }
 
   componentWillMount() {
@@ -14,9 +15,13 @@ export default class UserCard extends Component {
   renderUser() {
     const {
       user,
+      rank,
     } = this.props;
       return (
         <div className='user-card'>
+        <div className='user-plate'>
+        <div className='user-rank'>#{rank}</div>
+        <div className='user-details'>
         <img className='avatar' src={user.AvatarUrl || 'https://cdn.discordapp.com/embed/avatars/0.png'} />
         <NavLink
             className='username'
@@ -24,24 +29,26 @@ export default class UserCard extends Component {
           >
             {user.UserName || "Ghost in a Shell"}
           </NavLink>
-          <ul className="data">
-    <li>
-      <span className="entypo-trophy">Total Posts: { user.Posts.find(p => p.CountType === "4").Count }</span>
-    </li>
-    <li>
-      <span className="entypo-keyboard">Text Posts: { user.Posts.find(p => p.CountType === "3").Count }</span>
-    </li>
-    <li>
-      <span className="entypo-picture">Image Posts: { user.Posts.find(p => p.CountType === "2").Count }</span>
-    </li>
-    <li>
-      <span className="fontelico-emo-thumbsup">Emoji Posts: { user.Posts.find(p => p.CountType === "0").Count }</span>
-    </li>
-    <li>
-      <span className="entypo-video">Gif Posts: { user.Posts.find(p => p.CountType === "1").Count }</span>
-    </li>
- </ul>
-        </div>
+          </div>
+          </div>
+          <div className="post-data">
+    <div className='post-count'>
+      <span className="entypo-trophy">{ user.Posts.find(p => p.CountType === "4").Count }</span>
+      </div>
+      <div className='post-count'>
+      <span className="entypo-keyboard">{ user.Posts.find(p => p.CountType === "3").Count }</span>
+      </div>
+      <div className='post-count'>
+      <span className="entypo-picture">{ user.Posts.find(p => p.CountType === "2").Count }</span>
+      </div>
+      <div className='post-count'>
+      <span className="fontelico-emo-thumbsup">{ user.Posts.find(p => p.CountType === "0").Count }</span>
+      </div>
+      <div className='post-count'>
+      <span className="entypo-video">{ user.Posts.find(p => p.CountType === "1").Count }</span>
+      </div>
+      </div>
+    </div>
       );
   }
 
