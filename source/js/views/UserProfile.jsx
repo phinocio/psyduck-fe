@@ -5,17 +5,22 @@ import { NavLink } from 'react-router-dom';
 import { routeCodes } from 'constants/routes';
 
 import { getUser } from 'actions/users';
+import { getQuotes } from 'actions/quotes';
 
 @connect(state => ({
   error: state.users.get('error'),
   loading: state.users.get('loading'),
+  quotesError: state.quotes.get('error'),
+  quotesLoading: state.quotes.get('loading'),
   user: state.users.get('user'),
+  quotes: state.quotes.get('quotes'),
 }))
 export default class UserProfile extends Component {
   static propTypes = {
     error: PropTypes.string,
     loading: PropTypes.bool,
     users: PropTypes.object,
+    quotes: PropTypes.object,
     params: PropTypes.object,
     // from react-redux connect
     dispatch: PropTypes.func,
@@ -23,19 +28,22 @@ export default class UserProfile extends Component {
 
   constructor() {
     super();
-    this.state = { collapsed: { 'posts': true, 'ach': false, 'badges': false } };
+    this.state = { collapsed: { 'posts': true } };
   }
 
   componentWillMount() {
     const {
       dispatch,
       user,
+      quotes,
       match: { params },
     } = this.props;
     if (!user) {
       dispatch(getUser(params.userId));
+      dispatch(getQuotes(params.userId));
     } else if (user.results.UserId !== params.userId) {
       dispatch(getUser(params.userId));
+      dispatch(getQuotes(params.userId));
     }
   }
 
@@ -102,26 +110,28 @@ export default class UserProfile extends Component {
             })}
           </div>
         </div>
-        <div className={`details-header ${this.state.collapsed['ach'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('ach')}>Achievements</div>
-        <div className={`collapse ${this.state.collapsed['ach'] ? '' : 'in'}`}>
-        sss
-        </div>
       </div>
     );
   }
-
-  renderAchievements() {
+  renderQuotes() {
     const {
-      achievements,
-    } = this.props;
-
-    return achievements.results.map(achievement => {
+      results: quotes,
+    } = this.props.quotes;
+    return(
+      <div>
+    <div className={`details-header ${this.state.collapsed['quotes'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('quotes')}>Quotes</div>
+    <div className={`collapse ${this.state.collapsed['quotes'] ? '' : 'in'}`}>
+    {quotes.map((quote) => {
       return (
-        <div key={achievement.AchievementId}>
-          {achievement.Name}
-        </div>
+        <div className='quote-wrapper'><span className='iconicstroke-left-quote' /><div key={quote.QuoteId}>{quote.QuoteText}</div><span className='iconicstroke-right-quote' /></div>
       );
-    });
+    })}
+    </div>
+    </div>
+    );
+  }
+  renderAchievements() {
+
   }
 
   render() {
@@ -129,25 +139,17 @@ export default class UserProfile extends Component {
       loading,
       error,
       user,
+      quotes,
     } = this.props;
 
     return (
       <div>
-        {/*<NavLink
-            activeClassName='menu-link--active'
-            className='menu-link'
-            to={ routeCodes.LEADERBOARD }
-          >
-            {'<-'}
-        </NavLink>*/}
         <h1>User Details</h1>
         {loading && <div>Loading info...</div>}
         {error && error.toString()}
         <div className='user-details'>
-          {user && this.renderUser()}
-        </div>
-        <div className='ach-list'>
-
+        {user && this.renderUser()}
+        {quotes && this.renderQuotes()}
         </div>
       </div>
     );

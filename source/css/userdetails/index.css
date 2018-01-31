@@ -1,3 +1,17 @@
+@import url(http://weloveiconfonts.com/api/?family=iconicstroke);
+
+/* iconicstroke */
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+  padding: 0.3em;
+  color: rgba(0,0,0,0.5);
+}
+.quote-wrapper {
+    display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
 .collapse {
     display: none;
 }

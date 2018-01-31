@@ -73,7 +73,6 @@ const fetchResource = (path, userOptions = {}) => {
         // Handle unauthorized requests
         // Maybe redirect to login page?
       }
-
       // Check for error HTTP error codes
       if (response.status < 200 || response.status >= 300) {
         // Get response as text
@@ -81,7 +80,7 @@ const fetchResource = (path, userOptions = {}) => {
       }
 
       // Get response as json
-      return response.json();
+      return response.text();
     })
     // "parsedResponse" will be either text or javascript object depending if
     // "response.text()" or "response.json()" got called in the upper scope
@@ -91,9 +90,8 @@ const fetchResource = (path, userOptions = {}) => {
         // Throw error
         throw parsedResponse;
       }
-
       // Request succeeded
-      return { results: parsedResponse };
+      return { results: JSON.parse(parsedResponse.replace(/[\n\r]+/g, '')) };
     })
     .catch(error => {
       // Throw custom API error
@@ -115,8 +113,12 @@ function getUser(userId) {
 function getAchievements(userId) {
   return fetchResource(`achievements/${userId}`);
 }
+function getQuotes(userId) {
+  return fetchResource(`quotes/${userId}`);
+}
 export default {
   getUsers,
   getUser,
   getAchievements,
+  getQuotes,
 };
