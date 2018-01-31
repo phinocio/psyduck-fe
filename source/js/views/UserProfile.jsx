@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 @connect(state => ({
+    user: state.app.get('user'),
 }))
-
 export default class UserProfile extends Component {
   static propTypes = {
-    dispatch: PropTypes.func,
+    error: PropTypes.string,
+    loading: PropTypes.bool,
   }
 
   render() {

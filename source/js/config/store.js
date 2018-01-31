@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'dev/logger';
 
 import Immutable from 'immutable'; // Remove if you are not using server rendering
 
 import rootSaga from 'sagas';
 import rootReducer from 'reducers';
+import { debug } from 'util';
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
@@ -22,7 +24,7 @@ export default () => {
   } else {
     // In development mode beside sagaMiddleware
     // logger and DevTools are added
-    middleware = applyMiddleware(sagaMiddleware);
+    middleware = applyMiddleware(sagaMiddleware, logger);
 
     // Enable DevTools if browser extension is installed
     if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__) { // eslint-disable-line

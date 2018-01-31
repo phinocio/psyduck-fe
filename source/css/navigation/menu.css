@@ -5,7 +5,7 @@
     justify-content: space-between;
     padding-bottom: 2rem;
     margin: 0 auto 2rem;
-    max-width: 60rem;
+    max-width: 100%;
   
     @media (--lg) {
       margin-left: 20rem;
