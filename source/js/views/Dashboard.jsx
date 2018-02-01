@@ -14,7 +14,7 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard'>
-        I am Groot
+        I am Psyduck
       </div>
     );
   }

@@ -30,6 +30,13 @@ export default class Menu extends Component {
           >
             Leaderboard
           </NavLink>
+          <NavLink
+            activeClassName='menu-link--active'
+            className='menu-link'
+            to={ routeCodes.BOT_COMMANDS }
+          >
+            Bot Commands
+          </NavLink>
         </div>
       </div>
     );

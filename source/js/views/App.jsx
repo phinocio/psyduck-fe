@@ -6,6 +6,7 @@ import Menu from 'components/global/Menu';
 import Dashboard from 'views/Dashboard';
 import Leaderboard from 'views/Leaderboard';
 import UserProfile from 'views/UserProfile';
+import Commands from 'views/Commands';
 import NotFound from 'views/NotFound';
 
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path={routeCodes.DASHBOARD} component={Dashboard} />
             <Route path={routeCodes.USER_PROFILE} component={UserProfile} />
             <Route path={routeCodes.LEADERBOARD} component={Leaderboard} />
+            <Route path={routeCodes.BOT_COMMANDS} component={Commands} />
             <Route path='*' component={NotFound} />
           </Switch>
         </div>

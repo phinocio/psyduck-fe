@@ -1,0 +1,37 @@
+.command-module {
+background-color: rgba(0,0,0,0.5);
+margin-bottom: 1em;
+padding: 1em;
+color: white;
+}
+
+.command-module > .module-name {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.command-module > .available-commands {
+
+}
+
+.available-commands > .command {
+
+}
+
+.command > .command-description {
+    margin-bottom: 1em;
+}
+
+.command > .command-code {
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+.command > .command-example {
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1em;
+    border-radius: 0.5em;
+}
