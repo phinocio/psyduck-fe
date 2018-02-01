@@ -10,8 +10,10 @@
     --white: #fff;
   }
   
-  @custom-media --sm (max-width: 500px);
-  @custom-media --md (min-width: 769px);
-  @custom-media --lg (min-width: 1025px);
-  @custom-media --xl (min-width: 1800px);
+  @custom-media --xxs (min-width: 400px);
+  @custom-media --xs (min-width: 700px);
+  @custom-media --sm (min-width: 1000px);
+  @custom-media --md (min-width: 1300px);
+  @custom-media --lg (min-width: 1900px);
+  @custom-media --xl (min-width: 2500px);
   

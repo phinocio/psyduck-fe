@@ -6,14 +6,18 @@ import { routeCodes } from 'constants/routes';
 
 import { getUser } from 'actions/users';
 import { getQuotes } from 'actions/quotes';
+import { getAchievements } from 'actions/achievements';
 
 @connect(state => ({
   error: state.users.get('error'),
   loading: state.users.get('loading'),
   quotesError: state.quotes.get('error'),
   quotesLoading: state.quotes.get('loading'),
+  achievementsError: state.achievements.get('error'),
+  achievementsLoading: state.achievements.get('loading'),
   user: state.users.get('user'),
   quotes: state.quotes.get('quotes'),
+  achievements: state.achievements.get('achievements'),
 }))
 export default class UserProfile extends Component {
   static propTypes = {
@@ -21,6 +25,7 @@ export default class UserProfile extends Component {
     loading: PropTypes.bool,
     users: PropTypes.object,
     quotes: PropTypes.object,
+    achievements: PropTypes.object,
     params: PropTypes.object,
     // from react-redux connect
     dispatch: PropTypes.func,
@@ -35,15 +40,16 @@ export default class UserProfile extends Component {
     const {
       dispatch,
       user,
-      quotes,
       match: { params },
     } = this.props;
     if (!user) {
       dispatch(getUser(params.userId));
       dispatch(getQuotes(params.userId));
+      dispatch(getAchievements(params.userId));
     } else if (user.results.UserId !== params.userId) {
       dispatch(getUser(params.userId));
       dispatch(getQuotes(params.userId));
+      dispatch(getAchievements(params.userId));
     }
   }
 
@@ -52,7 +58,7 @@ export default class UserProfile extends Component {
     collapsed[div] = !collapsed[div];
     this.setState(collapsed);
   }
-  
+
   renderUser() {
     const {
       results: user,
@@ -117,21 +123,37 @@ export default class UserProfile extends Component {
     const {
       results: quotes,
     } = this.props.quotes;
-    return(
+    return (
       <div>
-    <div className={`details-header ${this.state.collapsed['quotes'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('quotes')}>Quotes</div>
-    <div className={`collapse ${this.state.collapsed['quotes'] ? '' : 'in'}`}>
-    {quotes.map((quote) => {
-      return (
-        <div className='quote-wrapper'><span className='iconicstroke-left-quote' /><div key={quote.QuoteId}>{quote.QuoteText}</div><span className='iconicstroke-right-quote' /></div>
-      );
-    })}
-    </div>
-    </div>
+        <div className={`details-header ${this.state.collapsed['quotes'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('quotes')}>Quotes</div>
+        <div className={`collapse ${this.state.collapsed['quotes'] ? '' : 'in'}`}>
+          {quotes.map((quote) => {
+            return (
+              <div className='quote-wrapper'><span className='iconicstroke-left-quote' /><div key={quote.QuoteId}>{quote.QuoteText}</div><span className='iconicstroke-right-quote' /></div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
   renderAchievements() {
-
+    const {
+      results: achievements,
+    } = this.props.achievements;
+    return (
+      <div>
+        <div className={`details-header ${this.state.collapsed['ach'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('ach')}>Achievements</div>
+        <div className={`collapse ${this.state.collapsed['ach'] ? '' : 'in'}`}>
+          {achievements.map((achievement) => {
+            return (
+              <div className='quote-wrapper'>
+                <div key={achievements.AchievementId}>{achievement.Name}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -140,6 +162,7 @@ export default class UserProfile extends Component {
       error,
       user,
       quotes,
+      achievements,
     } = this.props;
 
     return (
@@ -148,8 +171,9 @@ export default class UserProfile extends Component {
         {loading && <div>Loading info...</div>}
         {error && error.toString()}
         <div className='user-details'>
-        {user && this.renderUser()}
-        {quotes && this.renderQuotes()}
+          {user && this.renderUser()}
+          {quotes && this.renderQuotes()}
+          {achievements && this.renderAchievements()}
         </div>
       </div>
     );

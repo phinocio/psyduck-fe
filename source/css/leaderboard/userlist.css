@@ -37,13 +37,24 @@
   border-radius: .3em;
 margin-bottom: 2.5em;
 margin-right: 1em;
+
+@media (--xxs) {
+  width: 25em; 
+}
+@media (--xs) {
+  width: 23em; 
+}
+@media (--sm) {
+  width: 31em; 
+}
 @media (--md) {
-    flex-basis: 50%;
-    flex-shrink: 0;
-  }
-  
+  width: 30em; 
+}
   @media (--lg) {
-    width: 35em; 
+    width: 25em; 
+}
+  @media (--xl) {
+    width: 33em; 
 }
 }
 
