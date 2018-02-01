@@ -1,7 +1,7 @@
 // Simple API wrapper
 
-//const API_URL = 'http://psyduckapi.d333p.space/api';
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://psyduckapi.d333p.space/api';
+//const API_URL = 'http://localhost:5000/api';
 
 // Custom API error to throw
 function ApiError(message, data, status) {
