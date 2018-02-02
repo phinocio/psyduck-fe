@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import CollapsingComponent from 'components/elements/CollapsingComponent';
+
 export default class CommandModule extends Component {
     static propTypes = {
         moduleName: PropTypes.string,
@@ -95,13 +97,10 @@ export default class CommandModule extends Component {
 
         return (
             <div className={`command-module`}>
-                <div className={`module-name ${!this.state.open ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse()}>
-                    {moduleName} Module
-                    </div>
-                <div className={`available-commands collapse ${!this.state.open ? '' : 'in'}`}>
+                <CollapsingComponent wrapperClass='' headerClass='module-name' title={`${moduleName} Module`} >
                     {moduleQuote}
                     {this.renderCommands()}
-                </div>
+                </CollapsingComponent>
             </div>
         );
     }

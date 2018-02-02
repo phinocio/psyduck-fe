@@ -5,8 +5,8 @@ padding: 1em;
 color: white;
 }
 
-.command-module > .module-name {
-    font-size: 2em;
+.command-module .module-name {
+    font-size: 1.7em;
     margin-bottom: 0.2em;
 }
 
