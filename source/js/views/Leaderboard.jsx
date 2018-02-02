@@ -54,7 +54,7 @@ export default class Leaderboard extends Component {
       <div className='users'>
         <h1>Ranking</h1>
         {loading && <div>Loading users...</div>}
-        {error && error.toString()}
+        {error && 'RIP me....please tell my dummy head creator that I am unable to pull data.'}
         <div className='user-list'>
           {users && this.renderUsers()}
         </div>
