@@ -37,6 +37,13 @@ export default class Menu extends Component {
           >
             Bot Commands
           </NavLink>
+          <NavLink
+            activeClassName='menu-link--active'
+            className='menu-link'
+            to={ routeCodes.CHANGELOG }
+          >
+            Changelog
+          </NavLink>
         </div>
       </div>
     );
