@@ -8,6 +8,9 @@ import { getUser } from 'actions/users';
 import { getQuotes } from 'actions/quotes';
 import { getAchievements } from 'actions/achievements';
 
+import PostData from 'components/userprofile/PostData'
+import CollapsingComponent from 'components/elements/CollapsingComponent'
+
 @connect(state => ({
   error: state.users.get('error'),
   loading: state.users.get('loading'),
@@ -31,11 +34,6 @@ export default class UserProfile extends Component {
     dispatch: PropTypes.func,
   }
 
-  constructor() {
-    super();
-    this.state = { collapsed: { 'posts': true } };
-  }
-
   componentWillMount() {
     const {
       dispatch,
@@ -53,12 +51,6 @@ export default class UserProfile extends Component {
     }
   }
 
-  collapse = (div) => {
-    var collapsed = this.state.collapsed;
-    collapsed[div] = !collapsed[div];
-    this.setState(collapsed);
-  }
-
   renderUser() {
     const {
       results: user,
@@ -71,51 +63,14 @@ export default class UserProfile extends Component {
           </div>
           <div className='username'>{user.UserName || "Ghost in a Shell"}</div>
         </div>
-        <div className={`details-header ${this.state.collapsed['posts'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('posts')}>Post Data</div>
-        <div className={`collapse ${this.state.collapsed['posts'] ? '' : 'in'}`}>
-          <div className="post-data-wrapper">
-            <div className="post-data">
-              <div className="post-data-header">Totals</div>
-              <div className='post-count'>
-                <span className="entypo-trophy">Total Posts: {user.Posts.find(p => p.CountType === "4").Count}</span>
-              </div>
-              <div className='post-count'>
-                <span className="entypo-keyboard">Text Posts: {user.Posts.find(p => p.CountType === "3").Count}</span>
-              </div>
-              <div className='post-count'>
-                <span className="entypo-picture">Image Posts: {user.Posts.find(p => p.CountType === "2").Count}</span>
-              </div>
-              <div className='post-count'>
-                <span className="fontelico-emo-thumbsup">Emoji Posts: {user.Posts.find(p => p.CountType === "0").Count}</span>
-              </div>
-              <div className='post-count'>
-                <span className="entypo-video">Gif Posts: {user.Posts.find(p => p.CountType === "1").Count}</span>
-              </div>
-            </div>
-            {user.ChannelPosts.map((channel) => {
-              return (
-                <div className="post-data">
-                  <div className="post-data-header">{channel.ChannelName}</div>
-                  <div className='post-count'>
-                    <span className="entypo-trophy">Total Posts: {channel.PostCounts.find(p => p.CountType === "4").Count}</span>
-                  </div>
-                  <div className='post-count'>
-                    <span className="entypo-keyboard">Text Posts: {channel.PostCounts.find(p => p.CountType === "3").Count}</span>
-                  </div>
-                  <div className='post-count'>
-                    <span className="entypo-picture">Image Posts: {channel.PostCounts.find(p => p.CountType === "2").Count}</span>
-                  </div>
-                  <div className='post-count'>
-                    <span className="fontelico-emo-thumbsup">Emoji Posts: {channel.PostCounts.find(p => p.CountType === "0").Count}</span>
-                  </div>
-                  <div className='post-count'>
-                    <span className="entypo-video">Gif Posts: {channel.PostCounts.find(p => p.CountType === "1").Count}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <CollapsingComponent wrapperClass='post-data-wrapper' headerClass='details-header' title='Post Data'>
+          <PostData dataTitle='Total Posts' posts={user.Posts} />
+          {user.ChannelPosts.map((channel) => {
+            return (
+              <PostData dataTitle={channel.ChannelName} posts={channel.PostCounts} />
+            );
+          })}
+        </CollapsingComponent>
       </div>
     );
   }
@@ -125,14 +80,13 @@ export default class UserProfile extends Component {
     } = this.props.quotes;
     return (
       <div>
-        <div className={`details-header ${this.state.collapsed['quotes'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('quotes')}>Quotes</div>
-        <div className={`collapse ${this.state.collapsed['quotes'] ? '' : 'in'}`}>
+        <CollapsingComponent wrapperClass='' headerClass='details-header' title='Quotes' opened={true}>
           {quotes.map((quote) => {
             return (
               <div className='quote-wrapper'><span className='iconicstroke-left-quote' /><div key={quote.QuoteId}>{quote.QuoteText}</div><span className='iconicstroke-right-quote' /></div>
             );
           })}
-        </div>
+        </CollapsingComponent>
       </div>
     );
   }
@@ -142,8 +96,7 @@ export default class UserProfile extends Component {
     } = this.props.achievements;
     return (
       <div>
-        <div className={`details-header ${this.state.collapsed['ach'] ? 'entypo-down-open' : 'entypo-up-open'}`} onClick={() => this.collapse('ach')}>Achievements</div>
-        <div className={`collapse ${this.state.collapsed['ach'] ? '' : 'in'}`}>
+        <CollapsingComponent wrapperClass='' headerClass='details-header' title='Achievements' opened={true}>
           {achievements.map((achievement) => {
             return (
               <div className='quote-wrapper'>
@@ -151,7 +104,7 @@ export default class UserProfile extends Component {
               </div>
             );
           })}
-        </div>
+        </CollapsingComponent>
       </div>
     );
   }
