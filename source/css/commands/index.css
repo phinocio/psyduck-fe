@@ -22,17 +22,18 @@ color: white;
     margin-bottom: 1em;
 }
 
-.command > .command-code {
+.command .command-code {
     font-weight: bold;
     background-color: rgba(0,0,0,0.5);
     padding: 1em;
     border-radius: 0.5em;
 }
 
-.command > .command-example {
+.command .command-example {
     font-weight: bold;
     background-color: rgba(0,0,0,0.5);
     padding: 1em;
+    margin-bottom: 1em;
     border-radius: 0.5em;
 }
 
