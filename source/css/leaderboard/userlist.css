@@ -39,22 +39,22 @@ margin-bottom: 2.5em;
 margin-right: 1em;
 
 @media (--xxs) {
-  width: 25em; 
+  width: 22.5em; 
 }
 @media (--xs) {
-  width: 23em; 
+  width: 26em; 
 }
 @media (--sm) {
-  width: 31em; 
+  width: 48.5em; 
 }
 @media (--md) {
-  width: 30em; 
+  width: 31em;
 }
   @media (--lg) {
-    width: 25em; 
+    width: 31em; 
 }
   @media (--xl) {
-    width: 33em; 
+    width: 34em; 
 }
 }
 
