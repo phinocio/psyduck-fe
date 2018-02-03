@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import CollapsingComponent from 'components/elements/CollapsingComponent';
+import CommandSecion from './CommandSection';
 
 export default class CommandModule extends Component {
     static propTypes = {
@@ -11,61 +12,6 @@ export default class CommandModule extends Component {
         availableCommands: PropTypes.array,
     }
 
-    constructor() {
-        super();
-        this.state = { open: false };
-    }
-
-    collapse = () => {
-        this.setState({ open: !this.state.open });
-    }
-    renderParams(params) {
-        return (
-            <div>
-                Parameters:
-            <div className='command-code'>
-                    {params.join(' ')}
-                </div>
-            </div>
-        );
-    }
-    renderOptions(options) {
-        return (
-            <div>
-                Options:
-                <div className='command-code'>
-                    {options.map(option => {
-                        return (
-                            <div>{option}<br /></div>
-                        )
-                    })}
-                </div>
-            </div>
-        );
-    }
-    renderExamples(examples) {
-        return (
-            <div>
-                Example invocation:
-                {examples.map(example => {
-                    return (
-                        <div className='command-example'>
-                            {`!${example}`}
-                        </div>
-                    )
-                })}
-            </div>
-        );
-    }
-    renderOutput(output) {
-        return (
-            <div>Example output:
-                <div className='command-example'>
-                    {output}
-                </div>
-            </div>
-        );
-    }
     renderCommands() {
         const {
             availableCommands
@@ -77,14 +23,11 @@ export default class CommandModule extends Component {
                     <div className='command-description'>
                         {command.commandDescription}
                     </div>
-                    Commands:
-                            <div className='command-code'>
-                        {command.codes.join(', ')}
-                    </div>
-                    {command.params && this.renderParams(command.params)}
-                    {command.options && this.renderOptions(command.options)}
-                    {command.examples && this.renderExamples(command.examples)}
-                    {command.output && this.renderOutput(command.output)}
+                    <CommandSecion title='Commands:' itemsWrapperClass='command-code' items={[command.codes.join(', ')]} />
+                    {command.params && <CommandSecion title='Parameters:' itemsWrapperClass='command-code' items={[command.params]} />}
+                    {command.options && <CommandSecion title='Options:' itemsWrapperClass='command-code' items={command.options.map(o => {return (<div>{o}<br /></div>)})} />}
+                    {command.examples && <CommandSecion title='Example invocation:' itemWrapperClass='command-code' items={command.examples.map(e => {return `!${e}`})} />}
+                    {command.output && <CommandSecion title='Example output:' itemWrapperClass='command-example' items={[command.output]} />}
                 </div>
             )
         });
