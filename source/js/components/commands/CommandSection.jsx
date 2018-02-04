@@ -23,9 +23,9 @@ export default class CommandSection extends Component {
             <div>
                 <div className={titleClass}>{title}</div>
                 <div className={itemsWrapperClass}>
-                {items.map(item => {
+                {items && items.map((item, index) => {
                     return (
-                        <div className={itemWrapperClass}>
+                        <div key={`item-${index}`} className={itemWrapperClass}>
                             {item}
                         </div>
                     )
