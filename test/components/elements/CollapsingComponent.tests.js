@@ -7,7 +7,7 @@ import chaiEnzyme from 'chai-enzyme'
 Enzyme.configure({ adapter: new Adapter() });
 Chai.use(chaiEnzyme());
 
-import CollapsingComponent from '../source/js/components/elements/CollapsingComponent';
+import CollapsingComponent from '../../../source/js/components/elements/CollapsingComponent';
 
 describe('<CollapsingComponent />', () => {
     it('renders collapsed by default', () => {

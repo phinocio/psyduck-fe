@@ -7,7 +7,7 @@ import chaiEnzyme from 'chai-enzyme'
 Enzyme.configure({ adapter: new Adapter() });
 Chai.use(chaiEnzyme());
 
-import CommandSection from '../source/js/components/commands/CommandSection';
+import CommandSection from '../../../source/js/components/commands/CommandSection';
 
 describe('<CommandSection />', () => {
     it('renders the correct number of items (6)', () => {
