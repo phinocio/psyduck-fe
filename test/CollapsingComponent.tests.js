@@ -1,6 +1,6 @@
 import React from 'react';
 import Chai, { expect } from 'chai';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { render, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import chaiEnzyme from 'chai-enzyme'
 
@@ -31,6 +31,37 @@ describe('<CollapsingComponent />', () => {
 
         //Assert
         expect(wrapper).to.have.state('open', true);
+
+    });
+    it('renders title from props', () => {
+        //Arrange
+        const headerClass = 'test-title';
+        const title = 'COLLAPSE ME';
+        const wrapper = shallow(<CollapsingComponent headerClass={headerClass} title={title} />);
+
+        //Act
+
+        //Assert
+        expect(wrapper.find(`.${headerClass}`)).to.have.text(title);
+
+    });
+    it('renders children inside wrapperClass node', () => {
+        //Arrange
+        const wrapperClass = 'test-wrapper';
+        const wrapper = shallow(<CollapsingComponent wrapperClass={wrapperClass} >
+            <div>Child One</div>
+            <div>Child Two</div>
+            <div>Child Three</div>
+        </CollapsingComponent>);
+
+        //Act
+        const children = wrapper.find(`.${wrapperClass}`).children();
+        
+        //Assert
+        expect(children).to.have.length(3);
+        expect(children.at(0)).to.have.text('Child One')
+        expect(children.at(1)).to.have.text('Child Two')
+        expect(children.at(2)).to.have.text('Child Three')
 
     });
 });
