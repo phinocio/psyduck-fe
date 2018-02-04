@@ -14,9 +14,11 @@
     "hook-add": "prepush install",
     "hook-remove": "prepush remove",
     "test": "BABEL_ENV=test mocha --require babel-register",
-    "test:coverage": "BABEL_ENV=test nyc mocha --require babel-register"
+    "test:coverage": "cross-env NODE_ENV=test BABEL_ENV=test nyc mocha",
+    "test:report": "nyc report --reporter=text-lcov > coverage.lcov && codecov --token=3b68cda6-d10a-4f03-873e-f4c220c918de"
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-babel": "^1.2.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
@@ -34,6 +36,7 @@
     "babel-runtime": "^6.26.0",
     "chai": "^4.1.2",
     "chai-enzyme": "^1.0.0-beta.0",
+    "codecov": "^3.0.0",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.7",
     "enzyme": "^3.3.0",
@@ -79,6 +82,8 @@
     "redux-saga": "^0.16.0"
   },
   "nyc": {
+    "extends": "@istanbuljs/nyc-config-babel",
+    "all": true,
     "reporter": [
       "lcov",
       "text-summary"
@@ -86,7 +91,12 @@
     "extension": [
       ".jsx"
     ],
-    "all": true
+    "include": [
+      "source/**/*.js",
+      "source/**/*.jsx"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "description": "Psyduck, Front End Edition",
   "repository": {
