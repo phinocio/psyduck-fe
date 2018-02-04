@@ -12,7 +12,7 @@ export default class CollapsingComponent extends Component {
 
     constructor(props) {
         super();
-        this.state = { open: props.opened };
+        this.state = { open: props.opened || false };
     }
 
     collapse = () => {

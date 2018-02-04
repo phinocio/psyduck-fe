@@ -15,8 +15,9 @@ describe('<CommandSection />', () => {
         const itemWrapperClass = 'test-item';
         const items = ['1', '1', '1', '1', '1', '1'];
 
-        //Act
         const wrapper = shallow(<CommandSection itemWrapperClass={itemWrapperClass} items={items} />);
+
+        //Act
 
         //Assert
         expect(wrapper.find(`.${itemWrapperClass}`)).to.have.length(6);
@@ -24,9 +25,10 @@ describe('<CommandSection />', () => {
     it('renders no items when items is undefined', () => {
         //Arrange
         const itemWrapperClass = 'test-item';
+        
+        const wrapper = shallow(<CommandSection itemWrapperClass={itemWrapperClass}/>);
 
         //Act
-        const wrapper = shallow(<CommandSection itemWrapperClass={itemWrapperClass}/>);
 
         //Assert
         expect(wrapper.find(`.${itemWrapperClass}`)).to.have.length(0);
@@ -36,8 +38,9 @@ describe('<CommandSection />', () => {
         const titleClass = 'test-title';
         const title = 'goducks';
 
-        //Act
         const wrapper = shallow(<CommandSection titleClass={titleClass} title={title} />);
+
+        //Act
 
         //Assert
         expect(wrapper.find(`.${titleClass}`)).to.have.text(title);
