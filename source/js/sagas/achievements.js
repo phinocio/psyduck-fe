@@ -4,8 +4,8 @@ import {
     GET_ACHIEVEMENTS_START,
     GET_ACHIEVEMENTS_ERROR,
     GET_ACHIEVEMENTS_SUCCESS
-  } from 'actions/achievements';
-import api from 'api';
+  } from '../actions/achievements';
+import api from '../api';
 
 function createGetAchievements() {
     return function* (options) { // eslint-disable-line consistent-return

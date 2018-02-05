@@ -7,7 +7,7 @@ import {
   GET_USER_START,
   GET_USER_ERROR,
   GET_USER_SUCCESS,
-} from 'actions/users';
+} from '../actions/users';
 
 const initialState = Map({
   loading: false,

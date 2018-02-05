@@ -4,7 +4,7 @@ import {
   GET_ACHIEVEMENTS_START,
   GET_ACHIEVEMENTS_ERROR,
   GET_ACHIEVEMENTS_SUCCESS
-} from 'actions/achievements';
+} from '../actions/achievements';
 
 const initialState = Map({
   loading: false,

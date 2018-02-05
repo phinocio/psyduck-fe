@@ -7,8 +7,8 @@ import {
   GET_USER_START,
   GET_USER_ERROR,
   GET_USER_SUCCESS,
-} from 'actions/users';
-import api from 'api';
+} from '../actions/users';
+import api from '../api';
 
 // -------- Get people
 

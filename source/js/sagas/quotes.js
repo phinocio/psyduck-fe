@@ -4,8 +4,8 @@ import {
     GET_QUOTES_START,
     GET_QUOTES_ERROR,
     GET_QUOTES_SUCCESS
-} from 'actions/quotes';
-import api from 'api';
+} from '../actions/quotes';
+import api from '../api';
 
 function createGetQuotes() {
     return function* (options) { // eslint-disable-line consistent-return

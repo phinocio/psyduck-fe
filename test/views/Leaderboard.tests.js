@@ -8,3 +8,13 @@ Enzyme.configure({ adapter: new Adapter() });
 Chai.use(chaiEnzyme());
 
 import Leaderboard from '../../source/js/views/Leaderboard';
+
+describe('<Leaderboard />', () => {
+    it('mounts', () => {
+        //Arrange
+
+        //Act
+
+        //Assert
+    });
+});

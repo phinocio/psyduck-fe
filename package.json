@@ -57,6 +57,7 @@
     "react-svg-loader": "^2.1.0",
     "react-test-render": "^1.1.1",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.1",
     "style-loader": "^0.19.1",
     "svgo": "^1.0.3",
     "svgo-loader": "^2.1.0",

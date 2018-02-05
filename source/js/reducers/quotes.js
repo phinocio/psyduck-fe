@@ -4,7 +4,7 @@ import {
   GET_QUOTES_START,
   GET_QUOTES_ERROR,
   GET_QUOTES_SUCCESS
-} from 'actions/quotes';
+} from '../actions/quotes';
 
 const initialState = Map({
   loading: false,
