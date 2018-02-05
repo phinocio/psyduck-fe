@@ -9,13 +9,9 @@
     "client:dev": "webpack-dev-server",
     "client:build": "npm run clean && cross-env NODE_ENV=\"production\" webpack",
     "clean": "rm -rf ./build",
-    "lint-hook": "eslint ./source/js ./webpack ./*.js -f table --ext .js --ext .jsx",
-    "lint": "npm run lint-hook --silent || true",
-    "hook-add": "prepush install",
-    "hook-remove": "prepush remove",
     "test": "BABEL_ENV=test mocha --require babel-register --recursive",
     "test:coverage": "cross-env NODE_ENV=test BABEL_ENV=test nyc mocha --recursive",
-    "test:report": "test:coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=3b68cda6-d10a-4f03-873e-f4c220c918de"
+    "test:report": "npm run test:coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=3b68cda6-d10a-4f03-873e-f4c220c918de"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-babel": "^1.2.2",

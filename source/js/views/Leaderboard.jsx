@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUsers } from 'actions/users';
-import UserCard from 'components/leaderboard/UserCard';
+import { getUsers } from '../actions/users';
+import UserCard from '../components/leaderboard/UserCard';
 
 @connect(state => ({
   error: state.users.get('error'),
@@ -53,7 +53,7 @@ export default class Leaderboard extends Component {
     return (
       <div className='users'>
         <h1>Ranking</h1>
-        {loading && <div>Loading users...</div>}
+        {loading && <div id='user-loading-label'>Loading users...</div>}
         {error && 'RIP me....please tell my dummy head creator that I am unable to pull data.'}
         <div className='user-list'>
           {users && this.renderUsers()}
